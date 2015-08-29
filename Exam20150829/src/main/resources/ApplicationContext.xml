@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.1.xsd
+   http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<context:component-scan base-package="com.hand.util" />
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+	<import resource="mysql_config.xml" />
+
+	<bean id="cstartEventHandler" class="com.hand.util.applicationStartEvent" />
+	<bean id="cstopEventHandler" class="com.hand.util.applicationStopEvent" />
+
+	<bean id="daoBeforeEventHandler" class="com.hand.util.DaoBeforeEventHandler" />
+	<bean id="daoAfterEventHandler" class="com.hand.util.DaoAfterEventHandler" />
+	<bean id="daoBeforeEventPublisher" class="com.hand.util.DaoBeforeEventPublish" />
+	<bean id="daoAfterEventPublisher" class="com.hand.util.DaoAfterEventPublish" />
+
+	<mvc:annotation-driven />
+
+	<bean id="filmDao" class="com.hand.dao.impl.FilmDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="aop" class="com.hand.util.Aop">
+		<property name="daoBeforeEventPublish" ref="daoBeforeEventPublisher"/>
+		<property name="daoAfterEventPublish" ref="daoAfterEventPublisher"/>
+	</bean>	
+
+	<aop:config expose-proxy="true" proxy-target-class="true">
+		<aop:aspect id="aspect" ref="aop">
+			<!--配置包下所有类或接口的所有方法 -->
+			<aop:pointcut id="service" expression="execution(* com.hand.dao.*.add*(..))" />
+			<aop:around pointcut-ref="service" method="doAround" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
