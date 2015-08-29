@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.hand.entity.Language;
 
-public class LanRowMapper implements RowMapper{
+public class LanRowMapper implements RowMapper<Language>{
 	
 	public Language mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

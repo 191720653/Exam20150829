@@ -22,6 +22,13 @@ public class Aop {
 	public void setDaoAfterEventPublish(DaoAfterEventPublish daoAfterEventPublish) {
 		this.daoAfterEventPublish = daoAfterEventPublish;
 	}
+	
+	public Aop(){}
+	
+	public Aop(DaoBeforeEventPublish daoBeforeEventPublish,DaoAfterEventPublish daoAfterEventPublish){
+		this.daoBeforeEventPublish = daoBeforeEventPublish;
+		this.daoAfterEventPublish = daoAfterEventPublish;
+	}
 
 	public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
 //		System.out.println("Before " + pjp.getSignature().getName() + "()..........");

@@ -6,6 +6,10 @@ public class Language implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Short languageId;
 	private String name;
 	private Timestamp lastUpdate;

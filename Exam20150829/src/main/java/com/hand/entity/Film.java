@@ -1,7 +1,6 @@
 package com.hand.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * Film entity. @author MyEclipse Persistence Tools
@@ -11,6 +10,10 @@ public class Film implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Short filmId;
 	private int languageId;
 	private String title;

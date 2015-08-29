@@ -1,0 +1,16 @@
+com\hand\util\DaoBeforeEventHandler.class
+com\hand\util\DaoAfterEventPublish.class
+com\hand\util\DaoAfterEventHandler.class
+com\hand\util\DaoBeforeEventPublish.class
+com\hand\mapper\LanRowMapper.class
+com\hand\util\DaoStratEvent.class
+com\hand\entity\Film.class
+com\hand\Exam20150829\App.class
+com\hand\util\DaoStopEvent.class
+com\hand\util\applicationStopEvent.class
+com\hand\util\Aop.class
+com\hand\dao\impl\FilmDaoImpl.class
+com\hand\dao\IFilmDao.class
+com\hand\util\EventConfig.class
+com\hand\util\applicationStartEvent.class
+com\hand\entity\Language.class

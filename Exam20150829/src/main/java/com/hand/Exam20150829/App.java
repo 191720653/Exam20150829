@@ -9,7 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.hand.dao.IFilmDao;
 import com.hand.entity.Film;
 import com.hand.entity.Language;
-import com.hand.util.DaoBeforeEventPublish;
 
 /**
  * Hello world!
@@ -25,7 +24,8 @@ public class App
     	context.start();
     	Film film = new Film();IFilmDao iFilmDao = (IFilmDao) context.getBean("filmDao");
     	List<Language> list = iFilmDao.queryLanguage();
-    	Scanner scanner = new Scanner(System.in);
+    	@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
     	System.out.println("请输入电影标题:");
     	film.setTitle(scanner.nextLine());
     	System.out.println("请输入电影语言的id：");
